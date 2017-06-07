@@ -76,6 +76,7 @@ function LevelsScreen(ctx, utils, changeMenu){
     }
 
     this.update = function(){
+        var best;
         d.clearRect();
         d.imgFull(res.get('bg1'));
         d.textCenter('A9 MineSweeper', 0.15, 50, 'rgba(0, 0, 0, 0.3)', 'Verdana', 1);
@@ -84,6 +85,12 @@ function LevelsScreen(ctx, utils, changeMenu){
         btns[1].draw();
         btns[2].draw();
         btns[3].draw();
+        if(best = utils.storage.get('score1'))
+            d.text('(Best: '+best+'s)', 0.65, 0.41, '#fff', 15);
+        if(best = utils.storage.get('score2'))
+            d.text('(Best: '+best+'s)', 0.65, 0.53, '#fff', 15);
+        if(best = utils.storage.get('score3'))
+            d.text('(Best: '+best+'s)', 0.65, 0.65, '#fff', 15);
         // d.img(res.get(''));
     }
 

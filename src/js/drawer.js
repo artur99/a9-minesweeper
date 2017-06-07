@@ -36,7 +36,7 @@ var Drawer = function(ctx, w, h){
         }
         if(outer){
             ctx.strokeStyle = color;
-            ctx.lineWidth = 5;
+            ctx.lineWidth = outer === true?1:outer;
             ctx.strokeText(text, w/2, h*top_prec);
         }
 

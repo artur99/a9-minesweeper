@@ -18,6 +18,9 @@ var Button = function(ctx, utils, data){
     if(typeof data.img2 != 'undefined')
         var img2 = data.img2;
     var img1 = data.img1;
+    var stroke = 4;
+    if(typeof data.stroke != 'undefined')
+        stroke = data.stroke;
     var color = data.color;
     var pattern1, pattern2;
     var graph = {
@@ -63,7 +66,7 @@ var Button = function(ctx, utils, data){
         ctx.fillStyle = hovered()?pattern2:pattern1;
         ctx.fillRect(graph.x1, graph.y1, graph.w, graph.h);
         ctx.strokeStyle = color;
-        ctx.lineWidth = 4;
+        ctx.lineWidth = stroke;
         ctx.strokeRect(graph.x1, graph.y1, graph.w, graph.h);
         ctx.beginPath();
         ctx.font = t_size.toString()+'px'+' Verdana';

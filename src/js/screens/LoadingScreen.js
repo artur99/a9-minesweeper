@@ -21,7 +21,7 @@ function LoadinScreen(ctx, utils){
     this.update = function(){
         d.clearRect();
         d.imgFull(res.get('bg1'));
-        d.textCenter('A9 MineSweeper', 0.4, 50, 'rgba(0, 0, 0, 0.3)', 'Verdana', 1);
+        d.textCenter('A9 MineSweeper', 0.4, 50, 'rgba(0, 0, 0, 0.3)', 'Verdana', 4);
         d.textCenter('A9 MineSweeper', 0.4, 50, '#fff');
         var l_txt = '.';
         if(l_st>10) l_txt +='.';

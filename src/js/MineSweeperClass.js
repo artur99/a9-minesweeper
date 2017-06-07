@@ -10,6 +10,8 @@ function MineSweeperClass(ctx, utils, data){
     var matrix_real;
     var flags;
     var game_status;
+    var game_done;
+    var clicked_bomb;
 
     var pattern1;
 
@@ -21,9 +23,11 @@ function MineSweeperClass(ctx, utils, data){
         size_sq = data.size_sq;
 
         game_status = false;
+        game_done = false;
+        clicked_bomb = {x:-1,y:-1};
         generateMatrixes();
 
-        pattern1 = ctx.createPattern(data.terrain, 'repeat');
+        pattern1 = ctx.createPattern(data.img_terrain, 'repeat');
 
         utils.handlers.regClick(click);
         utils.handlers.regRClick(rclick);
@@ -31,6 +35,7 @@ function MineSweeperClass(ctx, utils, data){
     }
 
     this.draw = function(){
+        var sz1, sz2, sz3;
         ctx.beginPath();
         ctx.fillStyle = pattern1;
         ctx.fillRect(start_x, start_y, width, height);
@@ -44,11 +49,23 @@ function MineSweeperClass(ctx, utils, data){
             for(var j=0;j<data.num_y;j++){
                 // console.log(matrix_human, matrix_real);
                 if(matrix_human[i][j] == -2){
-
-                    ctx.drawImage(data.block1, (start_x + i*size_sq)+2, (start_y + j*size_sq)+2, size_sq-4, size_sq-4);
-                    ctx.strokeRect((start_x + i*size_sq)+2, (start_y + j*size_sq)+2, size_sq-4, size_sq-4);
+                    sz1 = imgSize(i, j, size_sq, 0.9, start_x, start_y);
+                    ctx.drawImage(data.img_block1, sz1.start_x, sz1.start_y, sz1.size_x, sz1.size_y);
+                    ctx.strokeRect(sz1.start_x, sz1.start_y, sz1.size_x, sz1.size_y);
+                    if(game_status == 'lost' && matrix_real[i][j] == 1){
+                        // If game is lost, we will draw the mines and the explosion
+                        if(i == clicked_bomb.x && j == clicked_bomb.y){
+                            sz2 = imgSize(i, j, size_sq, 0.8, start_x, start_y);
+                            ctx.drawImage(data.img_explosion, sz2.start_x, sz2.start_y, sz2.size_x, sz2.size_y);
+                        }else{
+                            sz2 = imgSize(i, j, size_sq, 0.7, start_x, start_y);
+                            ctx.drawImage(data.img_bomb, sz2.start_x, sz2.start_y, sz2.size_x, sz2.size_y);
+                        }
+                    }
                     if(flags[i][j] == 1){
-                        ctx.drawImage(data.flag, (start_x + i*size_sq)+5, (start_y + j*size_sq)+5, size_sq-10, size_sq-10);
+                        // Draw the set flags
+                        sz3 = imgSize(i, j, size_sq, 0.75, start_x, start_y);
+                        ctx.drawImage(data.img_flag, sz3.start_x, sz3.start_y, sz3.size_x, sz3.size_y);
                     }
                 }else if(matrix_human[i][j] > 0){
                     ctx.font = '600 17px Verdana';
@@ -67,7 +84,27 @@ function MineSweeperClass(ctx, utils, data){
         ctx.closePath();
     }
 
+    var imgSize = function(field_number_x, field_number_y, full_size, scale_size, add_to_x, add_to_y){
+        var min_size = full_size * scale_size;
+        var m_around = (full_size - min_size)/2;
+        var start_x = field_number_x*full_size + m_around;
+        var size_x = min_size;
+        var start_y = field_number_y*full_size + m_around;
+        var size_y = min_size;
+        if(typeof add_to_x != 'number')
+            add_to_x = 0;
+        if(typeof add_to_y != 'number')
+            add_to_y = 0;
+        return {
+            start_x: start_x + add_to_x,
+            size_x: size_x,
+            start_y: start_y + add_to_y,
+            size_y: size_y
+        };
+    }
+
     var click = function(pos){
+        if(game_done) return;
         var x = pos.x;
         var y = pos.y;
         if(x >= start_x && x <= start_x+width && y >= start_y && y <= start_y + height){
@@ -80,6 +117,7 @@ function MineSweeperClass(ctx, utils, data){
     }
 
     var rclick = function(pos){
+        if(game_done) return;
         var x = pos.x;
         var y = pos.y;
         if(x >= start_x && x <= start_x+width && y >= start_y && y <= start_y + height){
@@ -92,6 +130,9 @@ function MineSweeperClass(ctx, utils, data){
     }
 
     var handlePos = function(x, y){
+        if(flags[x][y] == 1){
+            return;
+        }
         if(matrix_real[x][y] == 1){
             return gameOver(x, y);
         }else if(matrix_human[x][y] == -2){
@@ -99,6 +140,7 @@ function MineSweeperClass(ctx, utils, data){
         }
         checkWon();
     }
+
     var handlePosFlag = function(x, y){
         if(countFlags() >= data.mines){
             return;
@@ -127,7 +169,7 @@ function MineSweeperClass(ctx, utils, data){
             return;
         }
         var pp2;
-        console.log("Checking "+x+" "+y);
+        // console.log("Checking "+x+" "+y);
         var mar = minesAround(x, y);
         if(mar > 0 && pp == 1){
             //We've gone too far on dangerous area
@@ -194,7 +236,7 @@ function MineSweeperClass(ctx, utils, data){
         var won = 1;
         for(var i=0;i<x;i++){
             for(var j=0;j<y;j++){
-                console.log(matrix_real[i][j], matrix_human[i][j]);
+                // console.log(matrix_real[i][j], matrix_human[i][j]);
                 if(matrix_real[i][j] == 0 && matrix_human[i][j] == -2){
                     won = 0;
                 }
@@ -205,17 +247,19 @@ function MineSweeperClass(ctx, utils, data){
 
     }
 
-    this.setEndCallback = function(won_cb){
-        won_cb = won_cb;
-    }
-
     var gameOver = function(x, y){
-        // alert('game over');
-        won_cb('lost');
+        clicked_bomb.x = x;
+        clicked_bomb.y = y;
+        game_done = true;
+        game_status = 'lost';
     }
     var gameWon = function(x, y){
-        // alert('You won the game! :D');
-        won_cb('won');
+        game_done = true;
+        game_status = 'won';
+    }
+
+    this.getStatus = function(){
+        return game_status;
     }
 
     init();

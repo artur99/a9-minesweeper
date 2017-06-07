@@ -13,6 +13,7 @@ function mainClass(canvas){
 
     var resources;
     var handlers;
+    var storage;
     var screens = {};
     var currentScreen;
 
@@ -20,10 +21,12 @@ function mainClass(canvas){
         resources = new resourceManager();
         handlers = new Handlers(canvas);
         drawer = new Drawer(ctx, width, height);
+        storage = new Storage();
 
         utils.resources = resources;
         utils.handlers = handlers;
         utils.drawer = drawer;
+        utils.storage = storage;
 
         screens['loading'] = new LoadinScreen(ctx, utils, setScreenAux);
         screens['mainMenu'] = new MainMenuScreen(ctx, utils, setScreenAux);

@@ -11,12 +11,16 @@ function GameScreen(ctx, utils, changeMenu){
     var time_e;
     var game;
     var diff = 0;
+    var game_done;
+    var gst;
 
     var init = function(){
         res.preload('bg1', 'bg1.png');
         res.preload('terr', 'terr.png');
         res.preload('block_h', 'block_h.png');
         res.preload('flag', 'flag.png');
+        res.preload('bomb', 'bomb.png');
+        res.preload('explosion', 'explosion.png');
 
         console.log('Started game...');
     }
@@ -26,6 +30,8 @@ function GameScreen(ctx, utils, changeMenu){
         btns = [];
         time_s = new Date();
         time_e = false;
+        game_done = 0;
+        gst = false;
         diff = utils.globals.difficulty;
         if(diff == 1){
             game = new MineSweeperClass(ctx, utils, {
@@ -35,33 +41,39 @@ function GameScreen(ctx, utils, changeMenu){
                 mines: 8,
                 center_x: w/2,
                 center_y: h/2,
-                terrain: res.get('terr'),
-                block1: res.get('block_h'),
-                flag: res.get('flag')
+                img_terrain: res.get('terr'),
+                img_block1: res.get('block_h'),
+                img_flag: res.get('flag'),
+                img_bomb: res.get('bomb'),
+                img_explosion: res.get('explosion')
             });
         }else if(diff == 2){
             game = new MineSweeperClass(ctx, utils, {
                 num_x: 12,
                 num_y: 12,
                 mines: 14,
-                size_sq: 30,
+                size_sq: 28,
                 center_x: w/2,
                 center_y: h/2,
-                terrain: res.get('terr'),
-                block1: res.get('block_h'),
-                flag: res.get('flag')
+                img_terrain: res.get('terr'),
+                img_block1: res.get('block_h'),
+                img_flag: res.get('flag'),
+                img_bomb: res.get('bomb'),
+                img_explosion: res.get('explosion')
             });
         }else if(diff = 3){
             game = new MineSweeperClass(ctx, utils, {
                 num_x: 16,
                 num_y: 16,
                 mines: 25,
-                size_sq: 20,
+                size_sq: 21,
                 center_x: w/2,
                 center_y: h/2,
-                terrain: res.get('terr'),
-                block1: res.get('block_h'),
-                flag: res.get('flag')
+                img_terrain: res.get('terr'),
+                img_block1: res.get('block_h'),
+                img_flag: res.get('flag'),
+                img_bomb: res.get('bomb'),
+                img_explosion: res.get('explosion')
             });
         }
         btns[0] = new Button(ctx, utils, {
@@ -74,6 +86,7 @@ function GameScreen(ctx, utils, changeMenu){
             loc_x: 0.77,
             loc_y: 0.9,
             color: '#fff',
+            stroke: 2,
             callback: function(){
                 changeMenu('mainMenu');
             }
@@ -81,6 +94,16 @@ function GameScreen(ctx, utils, changeMenu){
     }
 
     this.update = function(){
+        gst = game.getStatus();
+        if(gst !== false && time_e === false){
+            time_e = new Date();
+            if(game_done == 0){
+                game_done = 1;
+                if(gst == 'won')
+                    wonSave();
+            }
+        }
+
         d.clearRect();
         d.imgFull(res.get('bg1'));
         d.textCenter('A9 MineSweeper', 0.08, 50, 'rgba(0, 0, 0, 0.3)', 'Verdana', 1);
@@ -94,6 +117,21 @@ function GameScreen(ctx, utils, changeMenu){
         else if(time<100) time = '0'+time;
         else if(time>999) time = 999;
         d.text(time, 0.1, 0.9, '#fff', 30);
+
+        if(gst){
+            var txt2, colort;
+            if(gst == 'won'){
+                txt2 = 'You Won ('+parseInt(time)+'s)';
+                colort = '#8cff12';
+            }else{
+                txt2 = 'Game Over!';
+                colort = '#ff5c5c';
+            }
+
+            d.rect(0.3, 0.86, 0.4, 0.08, 'rgba(0, 0, 0, 0.3)');
+            d.textCenter(txt2, 0.9, 20, colort, 'Verdana', 2);
+        }
+
         btns[0].draw();
 
         game.draw();
@@ -105,6 +143,14 @@ function GameScreen(ctx, utils, changeMenu){
             alert("Won!");
         }else{
             alert("OOver!")
+        }
+    }
+    function wonSave(){
+        var df = diff;
+        var tm = parseInt((time_e - time_s)/1000);
+        var best = utils.storage.set('score'+df);
+        if(best === false || tm < parseInt(best)){
+            utils.storage.set('score'+df, tm);
         }
     }
 

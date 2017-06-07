@@ -33,13 +33,14 @@ function HelpScreen(ctx, utils, changeMenu){
             }
         });
         datatxt = [
-            'Hello! You need to click on all the empty',
+            'Hello!',
+            'You need to click on all the empty',
             'places without clicking the mines.',
             'The numbers near the covered places',
             'show the number of mines around that',
             'point in all the 8 directions.',
             ' ',
-            'If you click a mine, you\'l lose the game.'
+            'If you click a mine, you\'ll lose.'
         ]
     }
 
