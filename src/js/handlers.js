@@ -1,4 +1,4 @@
-var Handlers = function(canvas){
+var Handlers = function(canvas, initW, initH){
     var move_listeners = [];
     var click_listeners = [];
     var rclick_listeners = [];
@@ -30,9 +30,19 @@ var Handlers = function(canvas){
 
     function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
+        var x = evt.clientX - rect.left;
+        var y = evt.clientY - rect.top;
+        var cw = $(canvas).width();
+        var ch = $(canvas).height();
+        if(initW != cw || initH != ch){
+            x = (x * initW) / cw;
+            y = (y * initH) / ch;
+        }
+
+
         return {
-            x: evt.clientX - rect.left,
-            y: evt.clientY - rect.top
+            x: x,
+            y: y
         };
     }
 

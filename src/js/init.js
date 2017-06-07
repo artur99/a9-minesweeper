@@ -5,8 +5,6 @@ var initWidth = 500;
 
 
 
-
-
 mainClass = new mainClass(theCanvas);
 
 mainClass.run();

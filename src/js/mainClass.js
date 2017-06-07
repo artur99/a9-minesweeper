@@ -1,13 +1,9 @@
 function mainClass(canvas){
-    var width = $(canvas).width();
-    var height = $(canvas).height();
+    var width = initWidth;
+    var height = initHeight;
 
     var ctx = canvas.getContext("2d");
-    var utils = {
-        width: width,
-        height: height,
-        globals: {}
-    };
+    var utils = {};
     var theInterval = null;
     var intervalTime = 50; //ms
 
@@ -17,9 +13,22 @@ function mainClass(canvas){
     var screens = {};
     var currentScreen;
 
+    // this.reinitSize = function(){
+    //     width = $(canvas).width();
+    //     height = $(canvas).height();
+    //     utils.width = width;
+    //     utils.height = height;
+    // }
+
     function init(){
+        // this.reinitSize();
+        utils = {
+            width: width,
+            height: height,
+            globals: {}
+        }
         resources = new resourceManager();
-        handlers = new Handlers(canvas);
+        handlers = new Handlers(canvas, initWidth, initHeight);
         drawer = new Drawer(ctx, width, height);
         storage = new Storage();
 

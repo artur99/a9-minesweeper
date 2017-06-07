@@ -12,6 +12,8 @@ body{
     align-items: center;
 }
 #theGame{
+    max-width: 97%;
+    max-height: 97%;
     display: block;
     margin: auto;
     background: #fff;
