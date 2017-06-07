@@ -79,7 +79,7 @@ function LevelsScreen(ctx, utils, changeMenu){
         var best;
         d.clearRect();
         d.imgFull(res.get('bg1'));
-        d.textCenter('A9 MineSweeper', 0.15, 50, 'rgba(0, 0, 0, 0.3)', 'Verdana', 1);
+        d.textCenter('A9 MineSweeper', 0.15, 50, 'rgba(0, 0, 0, 0.3)', 'Verdana', 4);
         d.textCenter('A9 MineSweeper', 0.15, 50, '#fff');
         btns[0].draw();
         btns[1].draw();

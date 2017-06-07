@@ -1,4 +1,4 @@
-function LoadinScreen(ctx, utils){
+function LoadingScreen(ctx, utils){
     var ctx = ctx;
     var res = utils.resources;
     var w = utils.width;

@@ -28,7 +28,7 @@ function mainClass(canvas){
         utils.drawer = drawer;
         utils.storage = storage;
 
-        screens['loading'] = new LoadinScreen(ctx, utils, setScreenAux);
+        screens['loading'] = new LoadingScreen(ctx, utils, setScreenAux);
         screens['mainMenu'] = new MainMenuScreen(ctx, utils, setScreenAux);
         screens['about'] = new AboutScreen(ctx, utils, setScreenAux);
         screens['help'] = new HelpScreen(ctx, utils, setScreenAux);
