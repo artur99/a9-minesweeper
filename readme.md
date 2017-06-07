@@ -22,16 +22,16 @@ Time been working on it: 3 days.
         <img src="http://i.imgur.com/M5GJ0L1.gif" width="400" style="max-width:95%;">
     </a> <br>
     <a href="http://i.imgur.com/hmejd6q.png">
-        <img src="http://i.imgur.com/hmejd6q.png" width="800" style="max-width:95%;"> <br>
+        <img src="http://i.imgur.com/hmejd6q.png" width="800" style="max-width:95%;">
     </a> <br>
     <a href="http://i.imgur.com/nHvLC8B.png">
-        <img src="http://i.imgur.com/nHvLC8B.png" width="800" style="max-width:95%;"> <br>
+        <img src="http://i.imgur.com/nHvLC8B.png" width="800" style="max-width:95%;">
     </a> <br>
     <a href="http://i.imgur.com/cMkwIUA.png">
-        <img src="http://i.imgur.com/cMkwIUA.png" width="800" style="max-width:95%;"> <br>
+        <img src="http://i.imgur.com/cMkwIUA.png" width="800" style="max-width:95%;">
     </a> <br>
     <a href="http://i.imgur.com/WglZvXO.png">
-        <img src="http://i.imgur.com/WglZvXO.png" width="800" style="max-width:95%;"> <br>
+        <img src="http://i.imgur.com/WglZvXO.png" width="800" style="max-width:95%;">
     </a>
 </div>
 ## Installation
