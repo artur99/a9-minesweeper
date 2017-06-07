@@ -18,19 +18,19 @@ Time been working on it: 3 days.
 
 ## Screenshots & GIFs
 <div style="text-align: center;">
-    <a href="http://i.imgur.com/M5GJ0L1.gif">
+    <a href="http://i.imgur.com/M5GJ0L1.gif" target="_blank">
         <img src="http://i.imgur.com/M5GJ0L1.gif" width="400" style="max-width:95%;">
     </a> <br>
-    <a href="http://i.imgur.com/hmejd6q.png">
+    <a href="http://i.imgur.com/hmejd6q.png" target="_blank">
         <img src="http://i.imgur.com/hmejd6q.png" width="800" style="max-width:95%;">
     </a> <br>
-    <a href="http://i.imgur.com/nHvLC8B.png">
+    <a href="http://i.imgur.com/nHvLC8B.png" target="_blank">
         <img src="http://i.imgur.com/nHvLC8B.png" width="800" style="max-width:95%;">
     </a> <br>
-    <a href="http://i.imgur.com/cMkwIUA.png">
+    <a href="http://i.imgur.com/cMkwIUA.png" target="_blank">
         <img src="http://i.imgur.com/cMkwIUA.png" width="800" style="max-width:95%;">
     </a> <br>
-    <a href="http://i.imgur.com/WglZvXO.png">
+    <a href="http://i.imgur.com/WglZvXO.png" target="_blank">
         <img src="http://i.imgur.com/WglZvXO.png" width="800" style="max-width:95%;">
     </a>
 </div>
