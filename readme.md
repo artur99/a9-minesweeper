@@ -17,13 +17,23 @@ Time been working on it: 3 days.
 * Highest Score
 
 ## Screenshots & GIFs
-
-<img src="http://i.imgur.com/M5GJ0L1.gif"> <br>
-<img src="http://i.imgur.com/hmejd6q.png"> <br>
-<img src="http://i.imgur.com/nHvLC8B.png"> <br>
-<img src="http://i.imgur.com/cMkwIUA.png"> <br>
-<img src="http://i.imgur.com/WglZvXO.png"> <br>
-
+<div style="text-align: center;">
+    <a href="http://i.imgur.com/M5GJ0L1.gif">
+        <img src="http://i.imgur.com/M5GJ0L1.gif" width="400" style="max-width:95%;">
+    </a> <br>
+    <a href="http://i.imgur.com/hmejd6q.png">
+        <img src="http://i.imgur.com/hmejd6q.png" width="800" style="max-width:95%;"> <br>
+    </a> <br>
+    <a href="http://i.imgur.com/nHvLC8B.png">
+        <img src="http://i.imgur.com/nHvLC8B.png" width="800" style="max-width:95%;"> <br>
+    </a> <br>
+    <a href="http://i.imgur.com/cMkwIUA.png">
+        <img src="http://i.imgur.com/cMkwIUA.png" width="800" style="max-width:95%;"> <br>
+    </a> <br>
+    <a href="http://i.imgur.com/WglZvXO.png">
+        <img src="http://i.imgur.com/WglZvXO.png" width="800" style="max-width:95%;"> <br>
+    </a>
+</div>
 ## Installation
 Just clone the repo and run `game/index.html` in your browser.
 
