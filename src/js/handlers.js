@@ -3,8 +3,8 @@ var Handlers = function(canvas, initW, initH){
     var click_listeners = [];
     var rclick_listeners = [];
     var last_pos = {
-        x: 0,
-        y: 0
+        x: -1,
+        y: -1
     };
 
     canvas.addEventListener('mousemove', function(evt) {
@@ -62,6 +62,10 @@ var Handlers = function(canvas, initW, initH){
         move_listeners = [];
         click_listeners = [];
         rclick_listeners = [];
+        last_pos = {
+            x: -1,
+            y: -1
+        };
     }
 
     return this;
