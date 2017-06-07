@@ -1,0 +1,17 @@
+{
+  "name": "a9-minesweeper",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "artur99"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
