@@ -142,11 +142,12 @@ function MineSweeperClass(ctx, utils, data){
     }
 
     var handlePosFlag = function(x, y){
-        if(countFlags() >= data.mines){
+        var hasFlag = flags[x][y];
+        if(!hasFlag && countFlags() >= data.mines){
             return;
         }
         if(matrix_human[x][y] == -2){
-            flags[x][y] = !(flags[x][y]);
+            flags[x][y] = !(hasFlag);
         }
     }
     var countFlags = function(){
