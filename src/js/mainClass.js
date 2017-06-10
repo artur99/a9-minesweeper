@@ -10,8 +10,11 @@ function mainClass(canvas){
     var resources;
     var handlers;
     var storage;
+    var audio_player;
     var screens = {};
     var currentScreen;
+    var delta_l;
+    var delta;
 
     // this.reinitSize = function(){
     //     width = $(canvas).width();
@@ -31,11 +34,13 @@ function mainClass(canvas){
         handlers = new Handlers(canvas, initWidth, initHeight);
         drawer = new Drawer(ctx, width, height);
         storage = new Storage();
+        audio_player = new audioPlayer();
 
         utils.resources = resources;
         utils.handlers = handlers;
         utils.drawer = drawer;
         utils.storage = storage;
+        utils.audioPlayer = audio_player;
 
         screens['loading'] = new LoadingScreen(ctx, utils, setScreenAux);
         screens['mainMenu'] = new MainMenuScreen(ctx, utils, setScreenAux);
@@ -53,6 +58,7 @@ function mainClass(canvas){
     this.run = function(){
         resources.load(loaded);
         setScreen(currentScreen);
+        delta_l = new Date();
     }
 
     var loaded = function(){
@@ -67,7 +73,7 @@ function mainClass(canvas){
             throw new Error('Sorry, no screen like this!');
 
         handlers.reset();
-        console.log("changing to "+screen);
+        console.log("Changing to "+screen+"...");
 
         currentScreen = screen;
         if(typeof screens[currentScreen].screenHandler == 'function'){
@@ -81,7 +87,11 @@ function mainClass(canvas){
             clearInterval(theInterval);
         }
 
-        theInterval = setInterval(screens[currentScreen].update, intervalTime);
+        theInterval = setInterval(function(){
+            delta = new Date() - delta_l;
+            delta_l = new Date();
+            screens[currentScreen].update(delta);
+        }, intervalTime);
     }
 
     init();

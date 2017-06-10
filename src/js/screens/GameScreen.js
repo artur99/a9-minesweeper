@@ -20,7 +20,10 @@ function GameScreen(ctx, utils, changeMenu){
         res.preload('block_h', 'block_h.png');
         res.preload('flag', 'flag.png');
         res.preload('bomb', 'bomb.png');
+        res.preload('bomb_exploded', 'bomb_exploded.png');
         res.preload('explosion', 'explosion.png');
+        res.preload('explosion_sprite', 'explosion_sprite.png');
+        res.preload('audio_explosion', 'audio_explosion.mp3', 'audio');
 
         console.log('Started game...');
     }
@@ -45,7 +48,10 @@ function GameScreen(ctx, utils, changeMenu){
                 img_block1: res.get('block_h'),
                 img_flag: res.get('flag'),
                 img_bomb: res.get('bomb'),
-                img_explosion: res.get('explosion')
+                img_bomb_exploded: res.get('bomb_exploded'),
+                img_explosion: res.get('explosion'),
+                img_explosion_sprite: res.get('explosion_sprite'),
+                audio_explosion: res.get('audio_explosion')
             });
         }else if(diff == 2){
             game = new MineSweeperClass(ctx, utils, {
@@ -59,7 +65,10 @@ function GameScreen(ctx, utils, changeMenu){
                 img_block1: res.get('block_h'),
                 img_flag: res.get('flag'),
                 img_bomb: res.get('bomb'),
-                img_explosion: res.get('explosion')
+                img_bomb_exploded: res.get('bomb_exploded'),
+                img_explosion: res.get('explosion'),
+                img_explosion_sprite: res.get('explosion_sprite'),
+                audio_explosion: res.get('audio_explosion')
             });
         }else if(diff = 3){
             game = new MineSweeperClass(ctx, utils, {
@@ -73,7 +82,10 @@ function GameScreen(ctx, utils, changeMenu){
                 img_block1: res.get('block_h'),
                 img_flag: res.get('flag'),
                 img_bomb: res.get('bomb'),
-                img_explosion: res.get('explosion')
+                img_bomb_exploded: res.get('bomb_exploded'),
+                img_explosion: res.get('explosion'),
+                img_explosion_sprite: res.get('explosion_sprite'),
+                audio_explosion: res.get('audio_explosion')
             });
         }
         btns[0] = new Button(ctx, utils, {
@@ -93,7 +105,7 @@ function GameScreen(ctx, utils, changeMenu){
         });
     }
 
-    this.update = function(){
+    this.update = function(delta){
         gst = game.getStatus();
         if(gst !== false && time_e === false){
             time_e = new Date();
@@ -134,7 +146,7 @@ function GameScreen(ctx, utils, changeMenu){
 
         btns[0].draw();
 
-        game.draw();
+        game.draw(delta);
 
     }
 
