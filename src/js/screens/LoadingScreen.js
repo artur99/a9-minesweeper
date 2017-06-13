@@ -10,12 +10,17 @@ function LoadingScreen(ctx, utils){
 
     var init = function(){
         res.preload('bg1', 'bg1.png');
+        res.preload('bg1_audio', 'background_music.mp3', 'audio');
     }
 
     this.start = function(){
         console.log('Initializing game...');
-
         l_st = 0;
+
+        if(false){
+            // SHOULD BG AUDIO BE OOON!?
+            utils.audioPlayer.play('background_audio', res.get('bg1_audio'), 1, 0.03);
+        }
     }
 
     this.update = function(){

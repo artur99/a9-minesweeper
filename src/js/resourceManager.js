@@ -63,8 +63,8 @@ function resourceManager(){
         }
     }
 
-    var errorP1 = function(e, callback){
-        console.log("Error loading resource: ", this.initial_name);
+    var loadedP2 = function(e, callback){
+        console.log("Error loading resource: ", e.target.initial_name);
         console.log(e);
         loadedP1(e, callback);
     }

@@ -31,6 +31,9 @@ var Button = function(ctx, utils, data){
         x2: 0,
         y2: 0
     };
+    var click_sound = false;
+    if(typeof data.click_sound != 'undefined')
+        click_sound = data.click_sound;
 
     var init = function(){
         var center_line = loc_y * h;
@@ -59,7 +62,6 @@ var Button = function(ctx, utils, data){
         handlers.regClick(clicked);
     }
 
-
     this.draw = function(){
 
         ctx.beginPath();
@@ -85,6 +87,9 @@ var Button = function(ctx, utils, data){
                 data.callback();
             }, 50);
         }
+        if(click_sound){
+            utils.audioPlayer.play('click', click_sound);
+        }
     }
     var hovered = function(){
         var mp = handlers.lastPos();
@@ -93,6 +98,9 @@ var Button = function(ctx, utils, data){
         }
         return false;
 
+    }
+    this.reinit = function(){
+        handlers.regClick(clicked);
     }
 
 

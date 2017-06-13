@@ -6,8 +6,12 @@ This is a game made as a challenge between
 
 ## About
 Yet another Minesweeper game, but this one is made on a JS canvas.<br>
-Thanks to <a href="http://kenney.nl/assets" target="_blank">Kenney.nl</a> for the graphics, and to <a href="https://opengameart.org/content/game-backgrounds">OpenGameArt</a> for the page background.<br>
-Thanks to <a href="http://www.zapsplat.com">zapsplat.com</a> for some Audio UI.
+Graphics & others:
+* <a href="http://kenney.nl/assets" target="_blank">Kenney.nl - UI graphics</a>
+* <a href="https://opengameart.org/content/game-backgrounds">OpenGameArt - Background</a>
+* <a href="http://www.zapsplat.com">zapsplat.com - Some Audio UI</a>
+* <a href="https://opengameart.org/content/adventure-time">OpenGameArt - Background music</a>
+
 Time been working on it: 3 days.
 
 ## Play it

@@ -24,6 +24,7 @@ function GameScreen(ctx, utils, changeMenu){
         res.preload('explosion', 'explosion.png');
         res.preload('explosion_sprite', 'explosion_sprite.png');
         res.preload('audio_explosion', 'audio_explosion.mp3', 'audio');
+        res.preload('audio_uncover', 'uncover.mp3', 'audio');
 
         console.log('Started game...');
     }
@@ -51,7 +52,8 @@ function GameScreen(ctx, utils, changeMenu){
                 img_bomb_exploded: res.get('bomb_exploded'),
                 img_explosion: res.get('explosion'),
                 img_explosion_sprite: res.get('explosion_sprite'),
-                audio_explosion: res.get('audio_explosion')
+                audio_explosion: res.get('audio_explosion'),
+                audio_uncover: res.get('audio_uncover')
             });
         }else if(diff == 2){
             game = new MineSweeperClass(ctx, utils, {
@@ -68,7 +70,8 @@ function GameScreen(ctx, utils, changeMenu){
                 img_bomb_exploded: res.get('bomb_exploded'),
                 img_explosion: res.get('explosion'),
                 img_explosion_sprite: res.get('explosion_sprite'),
-                audio_explosion: res.get('audio_explosion')
+                audio_explosion: res.get('audio_explosion'),
+                audio_uncover: res.get('audio_uncover')
             });
         }else if(diff = 3){
             game = new MineSweeperClass(ctx, utils, {
@@ -85,7 +88,8 @@ function GameScreen(ctx, utils, changeMenu){
                 img_bomb_exploded: res.get('bomb_exploded'),
                 img_explosion: res.get('explosion'),
                 img_explosion_sprite: res.get('explosion_sprite'),
-                audio_explosion: res.get('audio_explosion')
+                audio_explosion: res.get('audio_explosion'),
+                audio_uncover: res.get('audio_uncover')
             });
         }
         btns[0] = new Button(ctx, utils, {

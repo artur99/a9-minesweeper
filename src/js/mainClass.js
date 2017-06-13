@@ -34,7 +34,7 @@ function mainClass(canvas){
         handlers = new Handlers(canvas, initWidth, initHeight);
         drawer = new Drawer(ctx, width, height);
         storage = new Storage();
-        audio_player = new audioPlayer();
+        audio_player = new audioPlayer(storage);
 
         utils.resources = resources;
         utils.handlers = handlers;
@@ -48,6 +48,7 @@ function mainClass(canvas){
         screens['help'] = new HelpScreen(ctx, utils, setScreenAux);
         screens['levels'] = new LevelsScreen(ctx, utils, setScreenAux);
         screens['game'] = new GameScreen(ctx, utils, setScreenAux);
+        screens['global'] = new OverlayGlobalScreen(ctx, utils, setScreenAux);
 
         currentScreen = 'loading';
     }
@@ -64,6 +65,7 @@ function mainClass(canvas){
     var loaded = function(){
         console.log("All loaded, ayy!");
         setTimeout(function(){
+            screens['global'].start();
             setScreen('mainMenu');
         }, 1500);
     }
@@ -82,6 +84,7 @@ function mainClass(canvas){
             });
         }
         screens[currentScreen].start();
+        screens['global'].restart();
 
         if(theInterval != null){
             clearInterval(theInterval);
@@ -91,6 +94,7 @@ function mainClass(canvas){
             delta = new Date() - delta_l;
             delta_l = new Date();
             screens[currentScreen].update(delta);
+            screens['global'].update(delta);
         }, intervalTime);
     }
 

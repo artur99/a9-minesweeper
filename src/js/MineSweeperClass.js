@@ -154,6 +154,7 @@ function MineSweeperClass(ctx, utils, data){
             return gameOver(x, y);
         }else if(matrix_human[x][y] == -2){
             recursiveFill(x, y, 0);
+            utils.audioPlayer.play('uncover', data.audio_uncover);
         }
         checkWon();
     }
@@ -271,7 +272,7 @@ function MineSweeperClass(ctx, utils, data){
         clicked_bomb.exploding = 1;
         animations['explosion'] = new AnimationSprite(74, 74, 11, 800);
         animations['opacity'] = new AnimationOpacity(0, 1, 800);
-        utils.audioPlayer.play(data.audio_explosion);
+        utils.audioPlayer.play('explosion', data.audio_explosion);
         // data.audio_explosion.currentTime = 0
         // data.audio_explosion.play();
         game_done = true;
