@@ -10,6 +10,7 @@ Graphics & others:
 * <a href="http://kenney.nl/assets" target="_blank">Kenney.nl - UI graphics</a>
 * <a href="https://opengameart.org/content/game-backgrounds">OpenGameArt - Background</a>
 * <a href="http://www.zapsplat.com">zapsplat.com - Some Audio UI</a>
+* <a href="http://kenney.nl/assets" target="_blank">Kenney.nl - Some other Audio UI</a>
 * <a href="https://opengameart.org/content/adventure-time">OpenGameArt - Background music</a>
 
 Time been working on it: 3 days.
@@ -23,12 +24,13 @@ Time been working on it: 3 days.
 * Instructions
 * Time Counter
 * Highest Score
+* Animations & Sound effects
 
 ## Screenshots & GIFs
 <div style="text-align: center;">
     <a href="http://i.imgur.com/M5GJ0L1.gif" target="_blank">
         <img src="http://i.imgur.com/M5GJ0L1.gif" width="400" style="max-width:95%;">
-    </a> <br>
+    </a>(a bit older, going to update it to match the latest version...) <br>
     <a href="http://i.imgur.com/hmejd6q.png" target="_blank">
         <img src="http://i.imgur.com/hmejd6q.png" width="800" style="max-width:95%;">
     </a> <br>
