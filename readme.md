@@ -28,9 +28,9 @@ Time been working on it: 3 days.
 
 ## Screenshots & GIFs
 <div style="text-align: center;">
-    <a href="http://i.imgur.com/M5GJ0L1.gif" target="_blank">
-        <img src="http://i.imgur.com/M5GJ0L1.gif" width="400" style="max-width:95%;">
-    </a>(a bit older, going to update it to match the latest version...) <br>
+    <a href="http://i.imgur.com/WVeVqXO.gif" target="_blank">
+        <img src="http://i.imgur.com/WVeVqXO.gif" width="400" style="max-width:95%;">
+    </a> <br>
     <a href="http://i.imgur.com/hmejd6q.png" target="_blank">
         <img src="http://i.imgur.com/hmejd6q.png" width="800" style="max-width:95%;">
     </a> <br>
