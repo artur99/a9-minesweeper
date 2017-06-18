@@ -2,7 +2,7 @@
 This is a game made as a challenge between
 <a href="https://github.com/artur99/a9-minesweeper">me</a>,
 <a href="http://github.com/pmaxim98" target="_blank">pmaxim98</a> and
-<a href="http://github.com/iulys01" target="_blank">iulys01</a>. :D
+<a href="http://github.com/iulyus01" target="_blank">iulyus01</a>. :D
 
 ## About
 Yet another Minesweeper game, but this one is made on a JS canvas.<br>
